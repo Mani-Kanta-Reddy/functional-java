@@ -2,6 +2,8 @@ package com.neon;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import static com.neon.Main.Gender.*;
 
@@ -35,6 +37,10 @@ public class Main
         System.out.println("Declarative Style");
         List<Person> females1 = people.stream().filter(person -> person.gender.equals(FEMALE)).toList();
         females1.forEach(System.out::println);
+
+        //Streams into limelight
+        Map<Gender, List<Person>> peopleByGender = people.stream().collect(Collectors.groupingBy(person -> person.gender));
+        System.out.println("peopleByGender = " + peopleByGender);
     }
 
     static class Person
